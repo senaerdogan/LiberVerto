@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>LiberVerto</title>
+    <link rel="stylesheet" href={{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css' )}}>
+    <link rel="stylesheet" href={{ url_for('static', filename="assets/css/Login-Form-Dark.css" )}}>
+    <link rel="stylesheet" href={{ url_for('static', filename="assets/css/styles.css" )}}>
+    <link rel="stylesheet" href={{ url_for('static', filename="assets/css/main.css" )}}>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+        rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/c6e606c493.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md fixed-top" style="background: #14274e;color: #fff0f0;">
+        <div class="container-fluid"><a class="navbar-brand" href="#" style="color: #fff0f0;">LiberVerto</a><button
+                data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
+                    navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item icon"><a class="nav-link fas fa-search"
+                            href="{{ url_for('main.mainpage', name = name )}}" style="color: #fff0f0;"></a>
+                    </li>
+                    <li class="nav-item icon"><a class="nav-link fas fa-user"
+                            href="{{ url_for('profile.profilepage', name = name )}}" style="color: #fff0f0;"></a></li>
+                    <li class="nav-item icon"><a class="nav-link fas fa-school" href="{{ url_for('school.schoolmode')}}" style="color: #fff0f0;"></a>
+                    </li>
+                    <li class="nav-item icon"><a class="nav-link fas fa-sign-out-alt" href="{{ url_for('landing.signout')}}"
+                            style="color: #fff0f0;"></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <script src={{ url_for('static', filename="assets/js/jquery.min.js" )}}></script>
+    <script src={{ url_for('static', filename="assets/bootstrap/js/bootstrap.min.js" )}}></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.4/ofi.min.js"></script>
+    <script src={{ url_for('static', filename="assets/js/scripts.js" )}}></script>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+</body>

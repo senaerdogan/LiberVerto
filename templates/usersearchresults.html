@@ -1,0 +1,49 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+<div class="jumbotron bg-cover" style="background: #f1f6f9;min-height: 100vh;margin-bottom: 0px;padding-bottom: 0px;">
+    {% if message %}
+    <div class="alert alert-navy" role="alert">
+        {{message}}
+    </div>
+    {% endif %}
+    <div class="container"
+        style="margin-top: 30px;margin-right: 0px;margin-left: 0px;max-width: 100%;margin-bottom: 0px;min-height: 85vh;">
+        {% if len|int() == 0 %}
+        <div class="row" style="margin-left: 30px;margin-right: 30px;">
+            <div class="col col-md-3" style="border-radius: 8px;background: rgba(241,246,249,0);">
+                <h1 style="margin-top: 30px;margin-bottom: 30px;">no results found for {{user_searched}}</h1>
+            </div>
+        </div>
+        {% else %}
+        <form method="post">
+            <div class="row" style="margin-left: 30px;margin-right: 30px;">
+                <div class="col col-md-3" style="box-shadow: -11px 0px 20px 0px #808080;border-radius: 8px;background: #f1f6f9;">
+                    <h1 style="margin-top: 30px;margin-bottom: 30px;">search results for {{user_searched}}</h1>
+                    <h3 style="margin-top: 30px;margin-bottom: 15px;">filter by vote</h3>
+                    <div class="row">
+                        <input class="form-control" input="number" placeholder="min vote value" name="min_vote_value" style="width: 45%; margin-left: 1%; margin-right: 1%;">
+                        <input class="form-control" input="number" placeholder="max vote value" name="max_vote_value" style="width: 45%; margin-left: 1%; margin-right: 1%;">
+                        <button class="btn btn-dark-gray" type="submit" name="vote_filter_btn" style="margin-left: 1%; margin-top: 1.5%;">apply filter</button>
+                    </div>
+                </div>
+                <div class="col offset-xl-0">
+                    <ul class="list-group">
+                        {% for user in users %}
+                        <div class="form-group">
+                            <li class="list-group-item"
+                                style="background: #f1f6f9;margin-top: 10px;margin-bottom: 10px;">
+                                <a type="submit" href="/anotheruser/{{user.id}}">{{user.name_}}</a>
+                                <h5>seller point: {{user.point_}}</h5>
+                            </li>
+                        </div>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

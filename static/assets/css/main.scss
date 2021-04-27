@@ -1,0 +1,14 @@
+//custom scss for bootstrap theme   
+
+$theme-colors: (
+    "light-creme": #fff0f0,
+    "creme": #ebd4d4,
+    "milk-chocolate": #835858,
+    "dark-chocolate" : #463333,
+    "little-white": #f1f6f9,
+    "navy": #14274e,
+    "dark-gray": #394867,
+    "light-gray": #9ba4b4
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap";

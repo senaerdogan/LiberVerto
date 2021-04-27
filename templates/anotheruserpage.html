@@ -1,0 +1,75 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+
+
+<div class="jumbotron bg-cover" style="background: #f1f6f9;min-height: 100vh;margin-bottom: 0px;padding-bottom: 0px;">
+    {% if message %}
+    <div class="alert alert-navy" role="alert">
+        {{message}}
+    </div>
+    {% endif %}
+    <div class="container"
+        style="margin-top: 30px;margin-right: 0px;margin-left: 0px;max-width: 100%;margin-bottom: 0px;min-height: 85vh;">
+        <div class="row" style="margin-left: 30px;margin-right: 30px;">
+            {% if len|int() == 0 %}
+            <div class="col col-md-3" style="border-radius: 8px;background: rgba(241,246,249,0);">
+                <h1 style="margin-top: 30px;margin-bottom: 30px;">there are no books to display </h1>
+            </div>
+            {% else %}
+            <div class="col col-md-3" style="border-radius: 8px;background: rgba(241,246,249,0);">
+                <h1 style="margin-top: 30px;margin-bottom: 30px;">showcase of {{user_name}} </h1>
+                <h2 style="margin-top: 30px;margin-bottom: 30px;">Seller Point: {{point}}</h2>
+            </div>
+            <div class="col offset-xl-0">
+
+                <div class="row">
+                    {% for book in books %}
+                    <div class="col col-md-4" style="margin-top: 10px;margin-bottom: 10px;">
+                        <div class="flip-card"
+                            style="margin-top: 10px;margin-right: 10px;margin-bottom: 10px;margin-left: 10px;color: rgba(33,37,41,0);width: 230px;height: 280px;">
+                            <div class="flip-card-inner" style="height: 280px;width: 230px;">
+                                <div class="flip-card-front" style="background: rgba(187,187,187,0);"><img
+                                        class="img-fluid" src="data:image/png;base64,{{ book.book_image }}"
+                                        style="max-width: 100%;max-height: 100%;"></div>
+                                <div class="flip-card-back" style="background: #394867;">
+                                    <div class="col" style="margin-top: 10%;">
+                                        <h5 style="color: #f1f6f9;">{{book.title}}</h5>
+                                        <h5 style="color: #f1f6f9;">{{book.author}}</h5>
+                                        <h5 style="color: #f1f6f9;">{{book.publisher}}</h5>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 0px;">
+                                        <div class="col">
+                                            <form method="post">
+                                                <div class="form-group">
+                                                    <input style="display: none;" name="book_id"
+                                                        value="{{book.id}}"></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button class="btn btn-block btn-outline-little-white" type="submit"
+                                                        name="shop_btn" value="add_to_cart">Add to
+                                                        cart</button>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button class="btn btn-block btn-outline-little-white" type="submit"
+                                                        name="shop_btn" value="add_to_wishlist">Add to
+                                                        wishlist</button>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
